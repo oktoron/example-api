@@ -44,7 +44,7 @@ public class TmdbApiImpl implements TmdbApi {
     }
 
     @Override
-    public String searchByDateAndActors(Date dateFrom, Date dateTo, List<String> actors) {
+    public String searchByDateAndActors(String dateFrom, String dateTo, List<String> actors) {
         try {
             String url = getTmdbUrlWithParametrs("discover/movie", dateFrom, dateTo, actors);
             HttpResponse<JsonNode> jsonResponse = Unirest.get(url).asJson();
@@ -73,7 +73,7 @@ public class TmdbApiImpl implements TmdbApi {
         return uriBuilder.build().toString();
     }
 
-    private String getTmdbUrlWithParametrs(String tmdbItem, Date dateFrom, Date dateTo, List<String> actors) throws URISyntaxException {
+    private String getTmdbUrlWithParametrs(String tmdbItem, String dateFrom, String dateTo, List<String> actors) throws URISyntaxException {
         StringBuilder builder = new StringBuilder(tmdbApiBaseUrl);
         builder.append(tmdbItem);
         URIBuilder uriBuilder = new URIBuilder(builder.toString());

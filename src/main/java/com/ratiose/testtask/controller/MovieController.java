@@ -82,11 +82,11 @@ public class MovieController {
         return ResponseEntity.status(HttpStatus.OK).body(null);
     }
 
-    @RequestMapping(value = "/popular", method = POST)
+    @RequestMapping(value = "/search", method = POST)
     public ResponseEntity getMoviesWithFavoriteActorsByDate(@RequestParam String email,
                                   @RequestParam String password,
-                                  @RequestParam Date dateFrom,
-                                  @RequestParam Date dateTo,
+                                  @RequestParam String dateFrom,
+                                  @RequestParam String dateTo,
                                   HttpSession session) {
         User user = userService.findUser(email, password);
         if (user == null) {
